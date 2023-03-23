@@ -6,6 +6,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import id.kputro.pkdex.core.BuildConfig
+import id.kputro.pkdex.core.datasource.PokemonSource
 import id.kputro.pkdex.core.network.clients.main.MainClient
 import id.kputro.pkdex.core.network.clients.main.MainEndpoints
 import id.kputro.pkdex.core.network.constants.AppEnv
@@ -96,6 +97,10 @@ object GeneralKoinModules {
     fun getMainRepository(client: MainClient, mockStorage: MockStorage): MainRepository =
       MainRepository(client, mockStorage)
 
+    fun getPokemonSource(client: MainClient): PokemonSource = PokemonSource(client)
+
     single { getMainRepository(get(), get()) }
+
+    single { getPokemonSource(get()) }
   }
 }

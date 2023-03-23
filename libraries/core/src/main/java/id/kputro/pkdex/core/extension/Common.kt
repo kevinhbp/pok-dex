@@ -5,6 +5,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+const val LOG_TAG = "PKDEX"
+
 var debounceJob: Job? = null
 fun debouncer(
   waitMs: Long = 200L,

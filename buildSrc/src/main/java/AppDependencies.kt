@@ -30,6 +30,9 @@ object AppDependencies {
     add(materialDialog)
     add(lottieCompose)
     add(accompanistInsets)
+
+    add(paging)
+    add(pagingCompose)
   }
 
   val androidTestLibs = arrayListOf<String>().apply {
@@ -69,6 +72,9 @@ object AppDependencies {
   private const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
   private const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
   private const val accompanistInsets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
+
+  private const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+  private const val pagingCompose = "androidx.paging:paging-compose:${Versions.pagingCompose}"
 
   // Test implementation
   private const val junit = "junit:junit:${Versions.junit}"

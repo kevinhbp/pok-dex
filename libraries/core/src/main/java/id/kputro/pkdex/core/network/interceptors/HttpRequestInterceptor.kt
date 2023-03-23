@@ -12,11 +12,9 @@ class HttpRequestInterceptor : Interceptor {
     val originalBody = originalRequest.body
     val mBuilder = originalRequest.newBuilder()
 
-    val appName = BuildConfig.APP_NAME
     val appVersionName = BuildConfig.VERSION_NAME
     val appVersionCode = BuildConfig.VERSION_CODE
     mBuilder
-      .header("App-Name", appName)
       .header("App-Version-Name", appVersionName)
       .header("App-Version-Code", appVersionCode)
     val authorization = HeaderSingleton.getDefault().authorization

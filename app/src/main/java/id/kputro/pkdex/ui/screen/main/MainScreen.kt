@@ -1,7 +1,9 @@
 package id.kputro.pkdex.ui.screen.main
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -16,11 +18,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.paging.PagingData
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.items
 import id.kputro.pkdex.R
+import id.kputro.pkdex.core.entities.main.PokeResult
 import id.kputro.pkdex.ui.components.AppBarLv1
+import id.kputro.pkdex.ui.components.LoadingDialog
 import id.kputro.pkdex.ui.components.appBarHeight
 import id.kputro.pkdex.ui.navigation.DoublePressedToExit
+import id.kputro.pkdex.ui.screen.main.widgets.PokemonList
 import id.kputro.pkdex.ui.theme.Spacing
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -32,16 +42,22 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel = koinView
   })
 
   MainContent()
+
+  LoadingDialog(showDialog = viewModel.showLoading)
 }
 
 @Composable
-fun MainContent() {
+fun MainContent(
+  viewModel: MainViewModel = koinViewModel()
+) {
   Surface {
     Column(
       modifier = Modifier
         .fillMaxSize()
+        .statusBarsPadding()
     ) {
-
+      Spacer(modifier = Modifier.fillMaxWidth().height(appBarHeight))
+      PokemonList(pokemonList = viewModel.pokemonList)
     }
 
     AppBarLv1 { MainAppBarContent() }

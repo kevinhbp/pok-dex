@@ -1,9 +1,11 @@
 // version constants for the Kotlin DSL dependencies
 object Versions {
   // App level
-  const val composeVersion = "1.3.2"
+  const val composeCompileVersion = "1.4.4"
 
-  const val kotlinVersion = "1.7.20"
+  const val composeVersion = "1.3.3"
+
+  const val kotlinVersion = "1.8.10"
 
   const val androidGradleApplicationVersion = "7.4.1"
 
@@ -29,6 +31,10 @@ object Versions {
   const val navigationCompose = "2.5.3"
 
   const val accompanist = "0.28.0"
+
+  const val paging = "3.1.1"
+
+  const val pagingCompose = "1.0.0-alpha18"
 
   // --
   const val appcompat = "1.3.1"

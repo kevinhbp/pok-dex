@@ -39,7 +39,7 @@ class MainApplication : MultiDexApplication() {
   private val useCaseModule = module {  }
 
   private val viewModelModule = module {
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get(), get()) }
   }
 
   override fun onCreate() {
