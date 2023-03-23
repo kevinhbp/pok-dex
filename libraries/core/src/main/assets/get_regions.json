@@ -1,0 +1,47 @@
+{
+  "status": true,
+  "code": 200,
+  "message": "Request Success",
+  "data": [
+    {
+      "code": "99",
+      "name": "APP"
+    },
+    {
+      "code": "00",
+      "name": "SMF HQ"
+    },
+    {
+      "code": "17",
+      "name": "Babel"
+    },
+    {
+      "code": "06",
+      "name": "Jambi"
+    },
+    {
+      "code": "98",
+      "name": "Palangkaraya"
+    },
+    {
+      "code": "03",
+      "name": "Palembang"
+    },
+    {
+      "code": "01",
+      "name": "Perawang"
+    },
+    {
+      "code": "05",
+      "name": "Pontianak"
+    },
+    {
+      "code": "04",
+      "name": "Samarinda"
+    },
+    {
+      "code": "07",
+      "name": "Tarakan"
+    }
+  ]
+}
