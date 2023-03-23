@@ -7,4 +7,5 @@ object ComponentShape {
   val button = RoundedCornerShape(14.0.dp)
   val input = RoundedCornerShape(14.0.dp)
   val dialog = RoundedCornerShape(14.0.dp)
+  val card = RoundedCornerShape(14.0.dp)
 }
