@@ -6,11 +6,11 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import id.kputro.pkdex.core.BuildConfig
-import id.kputro.pkdex.core.network.clients.ticu.TicuClient
-import id.kputro.pkdex.core.network.clients.ticu.TicuEndpoints
+import id.kputro.pkdex.core.network.clients.main.MainClient
+import id.kputro.pkdex.core.network.clients.main.MainEndpoints
 import id.kputro.pkdex.core.network.constants.AppEnv
 import id.kputro.pkdex.core.network.interceptors.HttpRequestInterceptor
-import id.kputro.pkdex.core.repositories.AuthRepository
+import id.kputro.pkdex.core.repositories.MainRepository
 import id.kputro.pkdex.core.repositories.MockStorage
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
@@ -55,11 +55,11 @@ private fun getRetrofit(client: OkHttpClient, baseUrl: String): Retrofit = Retro
 
 private fun getMoshi(): Moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
 
-private fun getTicuService(retrofit: Retrofit): TicuEndpoints =
-  retrofit.create(TicuEndpoints::class.java)
+private fun getMainService(retrofit: Retrofit): MainEndpoints =
+  retrofit.create(MainEndpoints::class.java)
 
-private fun getTicuClient(production: TicuEndpoints, staging: TicuEndpoints): TicuClient =
-  TicuClient(production, staging)
+private fun getMainClient(production: MainEndpoints, staging: MainEndpoints): MainClient =
+  MainClient(production, staging)
 
 private fun getMockStorage(context: Context): MockStorage = MockStorage(context)
 
@@ -80,22 +80,22 @@ object GeneralKoinModules {
 
     // PRODUCTION
     single(named(AppEnv.PRODUCTION)) { getRetrofit(get(), BuildConfig.URL_PRD) }
-    single(named(AppEnv.PRODUCTION)) { getTicuService(get(named(AppEnv.PRODUCTION))) }
+    single(named(AppEnv.PRODUCTION)) { getMainService(get(named(AppEnv.PRODUCTION))) }
 
     // STAGING
     single(named(AppEnv.STAGING)) { getRetrofit(get(), BuildConfig.URL_STG) }
-    single(named(AppEnv.STAGING)) { getTicuService(get(named(AppEnv.STAGING))) }
+    single(named(AppEnv.STAGING)) { getMainService(get(named(AppEnv.STAGING))) }
 
-    single { getTicuClient(get(named(AppEnv.PRODUCTION)), get(named(AppEnv.STAGING))) }
+    single { getMainClient(get(named(AppEnv.PRODUCTION)), get(named(AppEnv.STAGING))) }
   }
   val persistenceModule = module {
     single { getMoshi() }
 
   }
   val repositoryModule = module {
-    fun getAuthRepository(client: TicuClient, mockStorage: MockStorage): AuthRepository =
-      AuthRepository(client, mockStorage)
+    fun getMainRepository(client: MainClient, mockStorage: MockStorage): MainRepository =
+      MainRepository(client, mockStorage)
 
-    single { getAuthRepository(get(), get()) }
+    single { getMainRepository(get(), get()) }
   }
 }

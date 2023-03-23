@@ -4,9 +4,10 @@ package id.kputro.pkdex.core.repositories
 
 import android.content.Context
 import com.google.gson.Gson
-import id.kputro.pkdex.core.entities.region.GetRegionResponse
-import id.kputro.pkdex.core.entities.region.Region
-import id.kputro.pkdex.core.network.clients.ticu.TicuContract
+import id.kputro.pkdex.core.entities.main.PokeResult
+import id.kputro.pkdex.core.entities.main.Pokemon
+import id.kputro.pkdex.core.entities.main.PokemonList
+import id.kputro.pkdex.core.network.clients.main.MainContract
 import java.nio.charset.Charset
 
 fun Context.getJsonFromAssets(file: MockResponseFile): String {
@@ -27,10 +28,11 @@ fun Context.getJsonFromAssets(file: MockResponseFile): String {
 }
 
 enum class MockResponseFile(val filename: String) {
-  REGIONS("get_regions.json")
+  POKEMON_LIST("get_pokemon_list.json"),
+  POKEMON_DETAIL("get_pokemon_detail.json")
 }
 
-class MockStorage(private val context: Context) : TicuContract.TicuCommon {
+class MockStorage(private val context: Context) : MainContract.MainCommon {
 
   private val gson: Gson by lazy { Gson() }
 
@@ -38,14 +40,24 @@ class MockStorage(private val context: Context) : TicuContract.TicuCommon {
     context.getJsonFromAssets(file)
 
   // --
-  override suspend fun getRegions(): List<Region> {
+  override suspend fun getPokemonList(offset: Int, limit: Int): PokemonList {
     try {
-      val resultString = getMockResponse(MockResponseFile.REGIONS)
-      val result: GetRegionResponse = gson.fromJson(resultString, GetRegionResponse::class.java)
-      return result.data.orEmpty()
+      val resultString = getMockResponse(MockResponseFile.POKEMON_LIST)
+      return gson.fromJson(resultString, PokemonList::class.java)
     } catch (e: Exception) {
       e.printStackTrace()
     }
-    return listOf()
+    return PokemonList(0, listOf(), null, null)
+  }
+
+  override suspend fun getPokemonDetail(id: Any): Pokemon {
+    try {
+      val resultString = getMockResponse(MockResponseFile.POKEMON_DETAIL)
+      return gson.fromJson(resultString, Pokemon::class.java)
+    } catch (e: Exception) {
+      e.printStackTrace()
+    }
+    return Pokemon(0, "", listOf(), 0.0, 0.0,
+      listOf(), listOf(), 0, PokeResult("", ""), null)
   }
 }
