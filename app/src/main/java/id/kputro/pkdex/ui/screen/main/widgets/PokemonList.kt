@@ -143,8 +143,45 @@ fun PokemonView(
           .build(),
         contentDescription = pr.name,
         contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+          .fillMaxWidth()
+          .weight(1f)
       )
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(horizontal = Spacing.x2, vertical = Spacing.x1),
+        horizontalArrangement = Arrangement.Center
+      ) {
+        if (pr.types.isNotEmpty()) {
+          pr.types.forEach { type ->
+            PokemonTypeIcon(
+              type = type.type.name, size = 24,
+              modifier = Modifier.padding(horizontal = Spacing.x1)
+            )
+          }
+        }
+      }
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(
+            start = Spacing.x2,
+            end = Spacing.x2,
+            bottom = Spacing.x1
+          ),
+        horizontalArrangement = Arrangement.Center
+      ) {
+        if (pr.types.isNotEmpty()) {
+          pr.types.forEach { type ->
+            TextView(
+              text = type.type.name.formatName(), style = Typography.bodyMedium,
+              color = colorTextB, colorDarkMode = colorTextBDark,
+              modifier = Modifier.padding(horizontal = Spacing.x1)
+            )
+          }
+        }
+      }
     }
   }
 }

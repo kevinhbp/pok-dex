@@ -1,6 +1,7 @@
 package id.kputro.pkdex.core.extension
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
 
@@ -92,7 +93,7 @@ object ColorPokemonBackground {
   private val grass = Color(0xff95ce9e)
   private val poison = Color(0xffd695ee)
   private val electric = Color(0xFFD0AC38)
-  private val ground = Color(0xFFF8CBB6)
+  private val ground = Color(0xFFA56757)
   private val psychic = Color(0xffB6726F)
   private val rock = Color(0xffe1dfdd)
   private val ice = Color(0xffc8f5e8)
@@ -101,7 +102,7 @@ object ColorPokemonBackground {
   private val ghost = Color(0xffb8bacc)
   private val dark = Color(0xff9c9ca1)
   private val steel = Color(0xff9bb1b6)
-  private val fairy = Color(0xfff1cfee)
+  private val fairy = Color(0xffC4A2C1)
 
 
   private fun toMap(): Map<String, Color> {

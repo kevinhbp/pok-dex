@@ -40,7 +40,7 @@ class MainViewModel(
   }
 
   val pokemonList: Flow<PagingData<Pokemon>> = Pager(
-    PagingConfig(pageSize = 5, initialLoadSize = 5)
+    PagingConfig(pageSize = 10, initialLoadSize = 10)
   ) {
     pokemonSource
   }.flow.cachedIn(viewModelScope)
