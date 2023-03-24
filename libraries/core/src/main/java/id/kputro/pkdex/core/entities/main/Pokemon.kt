@@ -15,4 +15,15 @@ data class Pokemon(
   val baseExp: Int,
   val species: PokeResult,
   val photoFilePath: String?,
-) : Serializable
+) : Serializable {
+
+  companion object {
+
+    fun getBulbasaur(): Pokemon = Pokemon(
+      1, "Bulbasaur",
+      listOf(), 1.0, 1.0,
+      listOf(), listOf(), 1,
+      PokeResult("", ""), null
+    )
+  }
+}

@@ -19,7 +19,7 @@ private val DarkColorScheme = darkColorScheme(
   onPrimary = ColorText.black1,
   onSecondary = ColorText.black1,
   onTertiary = ColorText.black1,
-  surface = ColorComponentDark.surface1,
+  surface = ColorComponentDark.surface2,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -29,7 +29,7 @@ private val LightColorScheme = lightColorScheme(
   onPrimary = ColorText.white1,
   onSecondary = ColorText.white1,
   onTertiary = ColorText.white1,
-  surface = ColorComponent.surface1,
+  surface = ColorComponent.surface2,
 )
 
 @Suppress("DEPRECATION")

@@ -17,6 +17,7 @@ object AppDependencies {
     add(activityCompose)
     add(navigationCompose)
     // --
+    add(coil)
     add(materialColor)
     add(multiDex)
     add(alerter)
@@ -72,6 +73,7 @@ object AppDependencies {
   private const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
   private const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
   private const val accompanistInsets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
+  private const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
 
   private const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
   private const val pagingCompose = "androidx.paging:paging-compose:${Versions.pagingCompose}"

@@ -12,6 +12,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import id.kputro.pkdex.core.datasource.PokemonSource
 import id.kputro.pkdex.core.entities.main.PokeResult
+import id.kputro.pkdex.core.entities.main.Pokemon
 import id.kputro.pkdex.core.extension.LOG_TAG
 import id.kputro.pkdex.core.extension.onFailure
 import id.kputro.pkdex.core.extension.onLoading
@@ -38,7 +39,7 @@ class MainViewModel(
     this.navController = navController
   }
 
-  val pokemonList: Flow<PagingData<PokeResult>> = Pager(
+  val pokemonList: Flow<PagingData<Pokemon>> = Pager(
     PagingConfig(pageSize = 5, initialLoadSize = 5)
   ) {
     pokemonSource

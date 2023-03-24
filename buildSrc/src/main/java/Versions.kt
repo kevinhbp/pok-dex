@@ -36,6 +36,8 @@ object Versions {
 
   const val pagingCompose = "1.0.0-alpha18"
 
+  const val coil = "2.2.2"
+
   // --
   const val appcompat = "1.3.1"
 

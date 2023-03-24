@@ -123,6 +123,8 @@ object ColorComponent {
   val menuTP2 = Color(0xFF1BB191)
 
   val line = Color(0xFFF0F8F7)
+
+  val cardContainer = surface1
 }
 
 object ColorComponentDark {
@@ -162,4 +164,5 @@ object ColorComponentDark {
   val inputIconError = Color(0xFFFFCCCC)
 
   val line = Color(0xFF535353)
+  val cardContainer = surface3
 }
